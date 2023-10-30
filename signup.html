@@ -9,6 +9,8 @@
     <meta name="author" content="okler.net">
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Sign Up Form</title>
     <!-- Web Fonts  -->
 
     <!-- Vendor CSS -->
@@ -43,7 +45,7 @@
                     </h2>
                 </div>
                 <div class="card-body">
-                    <form id="signupForm" action="your_registration_endpoint" method="post">
+                    <!-- <form id="signupForm" action="your_registration_endpoint" method="post">
                         <div class="form-group mb-0">
                             <div class="row">
                                 <div class="col-sm-6 mb-3">
@@ -102,8 +104,55 @@
                                 </div>
                             </div>
                         </div>
+                    </form> -->
+
+                    <form id="registrationForm">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group mb-3">
+                                    <label>First-name</label>
+                                    <input name="firstname" id="firstname" type="text"
+                                        class="form-control form-control-lg" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group mb-3">
+                                    <label>Last-name</label>
+                                    <input name="lastname" id="lastname" type="text"
+                                        class="form-control form-control-lg" />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group mb-3">
+                            <label>username</label>
+                            <input name="username" id="username" type="text" class="form-control form-control-lg" />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>E-mail Address</label>
+                            <input name="email" id="email" type="email" class="form-control form-control-lg" />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Password</label>
+                            <input name="password" id="password" type="password" class="form-control form-control-lg" />
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="checkbox-custom checkbox-default">
+                                    <input id="AgreeTerms" name="agreeterms" type="checkbox" />
+                                    <label for="AgreeTerms">I agree with <a href="#" class="text-purple">terms of
+                                            use</a></label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-4 mb-4 w-100">Sign Up</button>
+                        <p class="text-center">Already have an account? <a href="signin.html" class="text-purple">Sign
+                                In!</a></p>
                     </form>
                 </div>
+
             </div>
             <p class="text-center text-muted mt-3 mb-3">&copy; Copyright 2021. All Rights Reserved.</p>
         </div>
@@ -123,17 +172,47 @@
     <script src="vendor/jquery-placeholder/jquery.placeholder.js"></script>
     <!-- Specific Page Vendor -->
     <script>
-        document.getElementById('signupForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent the form from submitting (for demo purposes)
 
-            // Perform your signup process here
-            // If the signup is successful, trigger the modal
+    </script>
 
-            var signupButton = document.getElementById('signupButton');
-            var modal = new bootstrap.Modal(document.getElementById('exampleModal'));
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function (event) {
+            event.preventDefault();
 
-            // Trigger the modal
-            modal.show();
+            // Get input values
+            const firstname = document.getElementById("firstname").value;
+            const lastname = document.getElementById("lastname").value;
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Prepare data to send
+            const data = {
+                firstname: firstname,
+                lastname: lastname,
+                username: username,
+                email: email,
+                password: password
+            };
+
+            // Make a POST request to your API
+            fetch("https://unixchange.pythonanywhere.com/appapi/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response from your API here
+                    console.log(data);
+                    // You can redirect the user or show a success message as needed
+                })
+                .catch(error => {
+                    // Handle errors here
+                    console.error("Error:", error);
+                });
         });
     </script>
 
