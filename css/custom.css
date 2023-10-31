@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
 :root {
     --color-purple: rgb(192, 25, 192);
     --color-purple-darker: purple;
@@ -7,9 +9,11 @@
 img {
     max-width: 100%;
 }
+
 #profile-image {
     width: 50%;
 }
+
 .profile-name {
     font-size: 1.2rem;
     font-weight: 600;
@@ -72,13 +76,26 @@ input:checked+.slider:before {
 .body-sign .card-sign .card-body {
     border-top: 5px solid var(--color-purple);
 }
+
 .btn-primary {
     background-color: var(--color-purple);
     border: none;
 }
+
 .btn-primary:hover,
 .btn-primary:active {
     background-color: var(--color-purple-darker) !important;
+}
+
+.btn-primary-outline {
+    background: transparent;
+    border: 2px solid var(--color-purple);
+    color: var(--color-purple);
+}
+
+.btn-primary-outline:hover {
+    background: var(--color-purple);
+    color: #fff;
 }
 
 .text-purple {
@@ -88,9 +105,11 @@ input:checked+.slider:before {
 .logo.float-start {
     transform: translateY(20px)
 }
+
 .reset {
     color: var(--color-purple);
 }
+
 .reset:hover {
     color: var(--color-purple-darker);
 }
@@ -104,15 +123,76 @@ input:checked+.slider:before {
     border-radius: 8px;
     font-weight: 600;
 }
+
 .status.delivered {
     background: #a7ecbe;
     color: green !important;
 }
+
 .status.pending {
     background: rgb(241, 210, 153);
     color: rgb(189, 125, 7) !important;
 }
+
 .status.shipped {
     background: rgb(157, 187, 243);
     color: blue !important;
+}
+
+
+/* Section Hero */
+.section-hero {
+    height: 100vh;
+    background: linear-gradient(to right bottom, #000000a6, #00000088), url('../img/uni-hero.jpg');
+    background-size: cover;
+    font-family: 'Inter', sans-serif;
+}
+
+.section-hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+}
+
+.section-hero .container h1 {
+    font-size: 9rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.section-hero .container h1 span {
+    color: var(--color-purple);
+}
+
+.section-hero .container h5 {
+    font-size: 1.3rem;
+    color: #ccc;
+}
+
+@media (max-width: 767px) {
+    .section-hero .container h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-hero .container h5 {
+        font-size: .9rem;
+    }
+}
+
+.section-about {
+    padding: 3rem 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.section-about img {
+    border-radius: 8px;
+}
+
+.section-about p {
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #888;
 }
